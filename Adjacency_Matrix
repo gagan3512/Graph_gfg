@@ -1,0 +1,58 @@
+import java.util.*;
+public class Graph_adjMatrix 
+{
+    //instance variable;
+    private boolean adjMatrix[][];
+    private int numVertices;
+    
+    //constructor - to initialize the matrix
+    Graph_adjMatrix(int numVertices)
+    {
+        this.numVertices = numVertices;
+        adjMatrix = new boolean[numVertices][numVertices];
+    }
+    
+    // add edge
+    public void addEdge(int i , int j)
+    {
+        adjMatrix[i][j] = true;
+        adjMatrix[j][i] = true;
+    }
+    
+    //Remove dge
+    public void removeedge(int i, int j)
+    {
+        adjMatrix[i][j] = false;
+        adjMatrix[j][i] = false;
+    }
+    
+    //print the matrix
+    public String toString()
+    {
+        StringBuilder s = new StringBuilder();
+        for(int i=0;i<numVertices;i++)
+        {
+            s.append(i + ": ");
+            for(boolean j : adjMatrix[i]){
+                s.append((j ? 1 : 0) + " ");
+            }
+                
+                s.append("\n");
+        }
+            return s.toString();
+            
+    }
+    
+    public static void main(String[] args) {
+        Graph_adjMatrix g = new Graph_adjMatrix(4);
+        g.addEdge(0, 1);
+        g.addEdge(0, 2);
+        g.addEdge(1, 2);
+        g.addEdge(2, 0);
+        g.addEdge(2, 3);
+
+    System.out.print(g.toString());
+        
+    }   
+}
+ 
